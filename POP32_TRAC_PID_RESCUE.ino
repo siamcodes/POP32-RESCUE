@@ -1,6 +1,6 @@
 #include <POP32.h>
-int L3, L2, L1, C, R1, R2, R3; //ตัวแแปรเก็บค่าเซนนเซอร์
-int RefL3, RefL2, RefL1, RefC, RefR1, RefR2, RefR3; //ตัวแปรเก็บค่าเฉลี่ยเซนนเซอร์
+int L2, L1, C, R1, R2; //ตัวแแปรเก็บค่าเซนนเซอร์
+int RefL2, RefL1, RefC, RefR1, RefR2; //ตัวแปรเก็บค่าเฉลี่ยเซนนเซอร์
 int Speed, ACCSpeed, SlowSpeed, TurnSpeed, LeftSpeed, RightSpeed; //ตัวแแปรความเร็วมอเตอร์
 long Timer0, StartTimer0, Timer1, StartTimer1;   //ตัวแปรจับเวลา Timer0=จับเวลาการแทรคเส้น Timer1=ใช้เวลาของภาระกิจ
 int Kp, Ki, Kd, Error, PreError, Integral, MaxSpeed; //ตัวแปรแกี่ยวกับ PID
@@ -28,20 +28,12 @@ void setup() {
   // TurnLeft();
   // TurnRight();
   // UTurn();
-  // TracNormalJC(Speed, 50);
-  // TracNomalTime(Speed,1000);
   // MotorStop();
   ResetTimer1();
-
 }
 
 void loop() {
   // Can1Normal();
-  // CalError();
-  // TracPID();
-   TracJC(Speed,0);
-  // TracSonar(Speed,4);
-  // TracTime(Speed, 2000);
   //Can2();
    Finish();
 }

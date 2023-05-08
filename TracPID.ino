@@ -2,7 +2,7 @@ void TracPID()      //แทรกเส้นนแบบ PID 7 เซนนเ
 {
   int Output, LeftOutput, RightOutput, KpTemp;
 
-  if (abs(Error) <= 3) KpTemp = 1; else KpTemp = Kp;
+  if (abs(Error) <= 2) KpTemp = 1; else KpTemp = Kp;
 
   Output = (KpTemp * Error) + (Ki * Integral) + Kd * (Error - PreError);  //สมการ PID
   
@@ -19,7 +19,6 @@ void TracPID()      //แทรกเส้นนแบบ PID 7 เซนนเ
   Integral += Error;            //บวกผลรวมของ Error ไปเรื่ื่อยๆ
 }
 
-
 void TracJC(int MotorSpeed, int Time) {  //แทรกเส้นแบบ PID
   InitialSpeed(MotorSpeed);
   CalError();
@@ -30,15 +29,6 @@ void TracJC(int MotorSpeed, int Time) {  //แทรกเส้นแบบ PID
   Forward(MotorSpeed, Time);
 }
 
-
-//void TracSonar(int MotorSpeed, int Distance) { //แทรกเส้น PID นเจอวัตถุให้หยุด
-//  InitialSpeed(MotorSpeed);
-//  while (sonar() > Distance) {   //เกินระยะที่กำหนดดให้ แทรก 
-//    CalError();
-//    TracPID();
-//  }
-//}
-
 void TracTime(int MotorSpeed, int Time) {   //แทรกเส้น PID แบบหน่วงเวลา
   ResetTimer0();
   InitialSpeed(MotorSpeed);
@@ -48,3 +38,11 @@ void TracTime(int MotorSpeed, int Time) {   //แทรกเส้น PID แ�
     ReadTimer0();
   }
 }
+
+//void TracSonar(int MotorSpeed, int Distance) { //แทรกเส้น PID นเจอวัตถุให้หยุด
+//  InitialSpeed(MotorSpeed);
+//  while (sonar() > Distance) {   //เกินระยะที่กำหนดดให้ แทรก 
+//    CalError();
+//    TracPID();
+//  }
+//}
