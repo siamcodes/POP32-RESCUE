@@ -23,6 +23,7 @@ void TracJC(int MotorSpeed, int Time) {  //แทรกเส้นแบบ PID
   InitialSpeed(MotorSpeed);
   CalError();
   while (Error < 100) {                  //ยังไม่เจอแยก ให้้ทำการ TracPID
+    // CheckObstacle();    //เช็คสิ่งกีดขวาง
     TracPID();
     CalError();
   }
@@ -46,3 +47,20 @@ void TracTime(int MotorSpeed, int Time) {   //แทรกเส้น PID แ�
 //    TracPID();
 //  }
 //}
+
+void CheckObstacle() {  //ฟังก์ชั่นเช็คสิ่งกีดขวาง
+  ReadADC();
+  if (Dist <= 30) {
+    ao();
+    beep();
+    delay(500);
+    sr(45);     //หมุนขวา
+    delay(200);
+    fd2(25, 65);
+    delay(1200);
+    // sl(20);
+    // delay(150);
+    // fd(30);
+    while (L2 == 1);
+  }
+}
