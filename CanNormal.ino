@@ -1,14 +1,18 @@
 void Can1Normal() //สนามที่บ้าน
 {
   Forward(Speed, 100);          //เดินจากจุดเริ่มต้น 100
-  TracNormalJC(Speed, 50);      //แทรกเดินเตรีียมเลี้ยว
+  TracNormalJC(Speed, 55);      //แทรกเดินเตรีียมเลี้ยว
   TurnRight();                   //เลี้ยว
-  TracNormalJC(Speed, 50);      //แทรกเดินเตรีียมเลี้ยว
- // TurnLeft();                   //เลี้ยว
-
-  TracNormalJC(Speed, 100);  //แทรกเดินข้ามแยก
-
-  TracNormalTime(ACCSpeed, 1000); //แทรกหน่วงเวลา
+  TracNormalTime(ACCSpeed, 2000);
+  TracNormalJC(Speed, 55);      //แทรกเดินเตรีียมเลี้ยว
+  TurnRight();                   //เลี้ยว
+  TracNormalJC(Speed, 55);      //แทรกเดินเตรีียมเลี้ยว
+  UTurnSlow();                   //เลี้ยว
+  TracNormalJC(Speed, 55);
+  TurnLeft();
+  TracNormalJC(Speed, 55);
+  TurnLeft();
+  TracNormalTime(Speed, 2000); //แทรกหน่วงเวลา
 }
 
 /*

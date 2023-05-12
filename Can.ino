@@ -34,15 +34,44 @@
 //---------------------
 
 void Can2(){
-  Forward(Speed, 30); 
-  TracJC(Speed,10);
-  TracJC(Speed,0);
-  TurnLeft();
-  TracJC(Speed,0);
-  TurnLeft();
-  TracJC(Speed,10);
-  TracJC(Speed,0);
-  TurnLeft();
-  TracTime(Speed,1000);
+  Forward(Speed, 100);          //เดินจากจุดเริ่มต้น 10
+  TracJC(Speed, 50);          //แทรกเดินเตรีียมเลี้ยว
+  TurnRight();
+  TracTime(ACCSpeed, 2000);
+  TracJC(Speed, 50);          //แทรกเดินเตรีียมเลี้ยว
+  TurnRight();
+  TracJC(Speed, 50);          //แทรกเดินเตรีียมเลี้ยว
+  TurnRight();
+  TracJC(SlowSpeed, 50);
+  TurnRight();
   
+  TracJC(Speed, 100);
+  TracJC(Speed, 100);
+  TracJC(Speed, 100);
+  
+  TracJC(SlowSpeed, 50);
+  MotorStop();
+  Backward(SlowSpeed, 100);
+  UTurnSlow();
+  TracPos();
+  GripCan();
+  
+  TracJC(Speed, 100);
+  TracJC(Speed, 100);
+  TracJC(Speed, 100);//ข้ามแยก
+
+  TracJC(Speed, 50);          //แทรกเดินเตรีียมเลี้ยว
+  TurnLeft();
+  TracJC(SlowSpeed, 60);          //แทรกเดินเตรีียมเลี้ยว
+  TurnLeft();
+  TracJC(SlowSpeed, 50);          //แทรกเดินเตรีียมเลี้ยว
+  TurnLeft();
+  
+  TracTime(ACCSpeed, 2000);
+  TracJC(Speed, 50);          //แทรกเดินเตรีียมเลี้ยว
+  TurnLeft();
+  TracJC(SlowSpeed, 50);
+  UTurnSlow();
+  PutCan();
+  TracTime(Speed, 1000);
 }

@@ -2,10 +2,10 @@ void TracPID()      //แทรกเส้นนแบบ PID 7 เซนนเ
 {
   int Output, LeftOutput, RightOutput, KpTemp;
 
-  if (abs(Error) <= 3) KpTemp = 1; else KpTemp = Kp;
+  if (abs(Error) <= 1) KpTemp = 1; else KpTemp = Kp;
 
   Output = (KpTemp * Error) + (Ki * Integral) + Kd * (Error - PreError);  //สมการ PID
-  
+
   LeftOutput = LeftSpeed + Output;        //ความเร็วมอเตอร์ด้านซ้าย +
   RightOutput = RightSpeed - Output;      //ความเร็วมอเตอร์ด้านขวา -
 
@@ -24,6 +24,8 @@ void TracJC(int MotorSpeed, int Time) {  //แทรกเส้นแบบ PID
   InitialSpeed(MotorSpeed);
   CalError();
   while (Error < 100) {                  //ยังไม่เจอแยก ให้้ทำการ TracPID
+    CheckObstacle();
+    TracPos();
     TracPID();
     CalError();
   }
@@ -33,7 +35,7 @@ void TracJC(int MotorSpeed, int Time) {  //แทรกเส้นแบบ PID
 
 //void TracSonar(int MotorSpeed, int Distance) { //แทรกเส้น PID นเจอวัตถุให้หยุด
 //  InitialSpeed(MotorSpeed);
-//  while (sonar() > Distance) {   //เกินระยะที่กำหนดดให้ แทรก 
+//  while (sonar() > Distance) {   //เกินระยะที่กำหนดดให้ แทรก
 //    CalError();
 //    TracPID();
 //  }
@@ -46,5 +48,26 @@ void TracTime(int MotorSpeed, int Time) {   //แทรกเส้น PID แ�
     CalError();
     TracPID();
     ReadTimer0();
+  }
+}
+
+void CheckObstacle() {
+  ConvertADC();
+  if (Dist <= 20) {
+    ao();
+    beep();
+    delay(200);
+    sr(40);
+    delay(400);
+    fd2(30, 65);
+    delay(1200);
+    /*sl(20);
+      delay(150);
+      fd(30)0;*/
+    ConvertADC();
+    while (R2 == 1) {
+      ConvertADC();
+    }
+    MotorStop();
   }
 }
