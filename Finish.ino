@@ -1,6 +1,6 @@
 void Finish() { //หุ่นยนต์หยุดและแสดงเวลาทั้งหมด
   ReadTimer1();
-  ao();
+  AO();
   beep(1);
   oled.clear();
   oled.text(0, 0, "Finish");
