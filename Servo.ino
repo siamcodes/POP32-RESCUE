@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 void ServoGrip() { //กำหนดองศาการคีบ
   for(int pos = 46; pos >= 6; pos -= 1) {
     servo(6, pos);
@@ -63,3 +64,5 @@ void PutCan(){
   Put();          //ปล่อย
   GripUp();    //ยกแขนขึ้น
 }
+=======
+>>>>>>> 82b6c058a954de89a1cb70416bfec16374a5f2dd

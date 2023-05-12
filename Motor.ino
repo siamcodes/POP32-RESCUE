@@ -1,9 +1,11 @@
 void MotorStop(){ //มอเตอร์หยุด
-   ao();  //มอเตอร์หยุดทั้งหมด
+   AO();  //มอเตอร์หยุดทั้งหมด
+   beep(3);
    delay(10); //หน่วงเวลา 10 ms
 }
 
-void Forward(int MotorSpeed, int Time){  //เดินหน้าหน่วงเวลา
+
+void Forward(int MotorSpeed, int Time) { //เดินหน้าหน่วงเวลา
   InitialSpeed(MotorSpeed);  //กำหนดความเร็วมอเตอร์
   FD2(LeftSpeed, RightSpeed);  //เดินไปข้างหน้า
   delay(Time);
@@ -15,13 +17,12 @@ void Backward(int MotorSpeed, int Time){  //เดินหน้าหน่ว
   delay(Time);
 }
 
-
 void TurnLeft() {     //เลี้ยวซ้าย
   MotorStop();
-  sl(TurnSpeed);      //หมุนซ้าย
+  SL(TurnSpeed);      //หมุนซ้าย
   delay(100);
   ConvertADC();
-  while (L2 == 1) {   //ถ้่าเจอขาวอยูู่่ วนอ่านค่าสีไไปเรื่อยๆ จนเจอดำ
+  while (L1 == 1) {   //ถ้าเจอขาวอยู่ วนอ่านค่าสีไปเรื่อยๆ จนเจอดำ
     ConvertADC();
   }
   MotorStop();
@@ -29,18 +30,18 @@ void TurnLeft() {     //เลี้ยวซ้าย
 
 void TurnRight() {    //เลี้ยวขวา
   MotorStop();
-  sr(TurnSpeed);      //หมุนซ้าย
+  SR(TurnSpeed);      //หมุนซ้าย
   delay(100);         //ปรับค่าให้เลี้ยวตรงเส้น
   ConvertADC();
-  while (R2 == 1) {   //ถ้่าเจอขาวอยูู่่ วนอ่านค่าสีไไปเรื่อยๆ จนเจอดำ
+  while (R1 == 1) {   //ถ้าเจอขาวอยู่ วนอ่านค่าสีไปเรื่อยๆ จนเจอดำ
     ConvertADC();
   }
   MotorStop();
 }
 
-
 void UTurn() {        //ขวา
   MotorStop();
+<<<<<<< HEAD
   sr(TurnSpeed);      //หมุนซ้าย
   delay(800);         //ปรับค่าให้เเเลยแยกตัด เพื่อหมุนกลับ
   ConvertADC();
@@ -54,8 +55,12 @@ void UTurnSlow() {        //ขวา
   MotorStop();
   sr(50);      //หมุนซ้าย
   delay(500);         //ปรับค่าให้เเเลยแยกตัด เพื่อหมุนกลับ
+=======
+  SR(TurnSpeed);      //หมุนขวา
+  delay(500);         //ปรับค่าให้เลยแยกตัด เพื่อหมุนกลับ
+>>>>>>> 82b6c058a954de89a1cb70416bfec16374a5f2dd
   ConvertADC();
-  while (R2 == 1) {   //ถ้่าเจอขาวอยูู่่ วนอ่านค่าสีไไปเรื่อยๆ จนเจอดำ
+  while (R2 == 1) {   //ถ้าเจอขาวอยู่ วนอ่านค่าสีไปเรื่อยๆ จนเจอดำ
     ConvertADC();
   }
   MotorStop();
